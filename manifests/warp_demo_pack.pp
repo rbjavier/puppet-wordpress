@@ -33,7 +33,10 @@ define wordpress_site::warp_demo_pack (
     command => "unzip ${package} -d ${test_docroot}",
     path    => ['/bin', '/usr/bin'],
     creates => "${test_docroot}/index.php",
-    require => File[$test_docroot],
+    require => [
+      File[$test_docroot],
+      Package['unzip'],
+    ],
     notify  => Exec["chmod_{theme}_{build}_wkcache"],
   }
 

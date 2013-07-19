@@ -26,7 +26,10 @@ define wordpress_site::wp_app (
       command => "unzip ${theme_package} -d ${themes_dir}",
       path    => ['/bin', '/usr/bin'],
       creates => "${themes_dir}/${app_name}/index.php",
-      require => Exec["get_${app_name}_wordpress"],
+      require => [
+        Exec["get_${app_name}_wordpress"],
+        Package['unzip'],
+      ]
     }
   }
 

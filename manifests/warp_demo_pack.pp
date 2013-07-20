@@ -16,7 +16,7 @@ define wordpress_site::warp_demo_pack (
 
   $dbname     = "${theme}_${build}"
   $dbuser     = "root"
-  $dbpassword = $wordpress_site::mysql_root_password
+  $dbpassword = $wordpress_site::mysql_rootpass
   $dbhost     = 'localhost'
 
   database { $dbname:

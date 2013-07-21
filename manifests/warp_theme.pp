@@ -14,7 +14,9 @@ define wordpress_site::warp_theme (
   $parent_dir = '/vagrant',
   $widgetkit  = false,
 ) {
-  include wordpress_site
+  if ! defined(Class['wordpress_site']) {
+    fail('Include the wordpress_site class before using the wordpress_site::warp_theme defined resource')
+  }
 
   validate_slength($theme_name, 10)
   validate_absolute_path($parent_dir)

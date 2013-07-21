@@ -2,7 +2,9 @@ define wordpress_site::wp_app (
   $app_name      = $title,
   $theme_package = undef,
 ) {
-  include wordpress_site
+  if ! defined(Class['wordpress_site']) {
+    fail('Include the wordpress_site class before using the wordpress_site::wp_app defined resource')
+  }
 
   validate_slength($app_name, 15)
 

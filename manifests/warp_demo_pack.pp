@@ -3,7 +3,9 @@ define wordpress_site::warp_demo_pack (
   $build,
   $package,
 ) {
-  include wordpress_site
+  if ! defined(Class['wordpress_site']) {
+    fail('Include the wordpress_site class before using the wordpress_site::warp_demo_pack defined resource')
+  }
 
   validate_absolute_path($package)
 

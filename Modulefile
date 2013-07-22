@@ -1,4 +1,4 @@
-name 'rbjavier-wordpress'
+name 'puppet-wordpress'
 version '0.1.0'
 source 'git://github.com/rbjavier/puppet-wordpress.git'
 author 'rbjavier'

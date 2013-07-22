@@ -1,6 +1,6 @@
-name    'rbjavier-wordpress'
+name 'rbjavier-wordpress'
 version '0.1.0'
-source 'git://github.com/rbjavier/puppet-wordpress'
+source 'git://github.com/rbjavier/puppet-wordpress.git'
 author 'rbjavier'
 license 'Apache 2.0'
 summary 'Puppet module for Wordpress'

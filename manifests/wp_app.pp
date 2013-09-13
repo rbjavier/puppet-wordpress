@@ -1,19 +1,38 @@
+# Definition: wordpress_site::wp_app
+#
+# Installs a wordpress application
+#
+# Parameters:
+# - the $exclude_wp_content option excludes the wp-content directory when extracting the wordpress package
+# - the $theme_package is the path to a zip archive of a wordpress theme that will be installed in the wordpress application site
+#
+# Requires:
+# - the wordpress_site class
+#
 define wordpress_site::wp_app (
-  $app_name      = $title,
-  $theme_package = undef,
+  $app_name           = $title,
+  $exclude_wp_content = true,
+  $theme_package      = undef,
 ) {
   if ! defined(Class['wordpress_site']) {
     fail('Include the wordpress_site class before using the wordpress_site::wp_app defined resource')
   }
 
-  validate_slength($app_name, 15)
+  validate_slength($app_name, 10)
+  validate_bool($exclude_wp_content)
 
   file { "${wordpress_site::wp_dir}/${app_name}":
     ensure => directory,
   }
 
+  if $exclude_wp_content {
+    $x_wp_content = 'wp-content'
+  }
+
   exec { "get_${app_name}_wordpress":
-    command => "wget -P /tmp http://wordpress.org/latest.tar.gz && tar xzf /tmp/latest.tar.gz -C /tmp && cp -r /tmp/wordpress/* ${wordpress_site::wp_dir}/${app_name}",
+    command => "wget -P /tmp http://wordpress.org/latest.tar.gz &&\
+               tar xzf /tmp/latest.tar.gz -C /tmp --exclude=${x_wp_content} &&\
+               cp -r /tmp/wordpress/* ${wordpress_site::wp_dir}/${app_name}",
     path    => ['/bin', '/usr/bin'],
     creates => "${wordpress_site::wp_dir}/${app_name}/index.php",
     require => File["${wordpress_site::wp_dir}/${app_name}"],

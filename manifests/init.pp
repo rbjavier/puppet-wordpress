@@ -32,10 +32,9 @@ class wordpress_site (
     target => "${wp_dir}",
   }
 
-  $plugins_path  = "${wp_dir}/installable_plugins"
   $demo_test_dir = "${wp_dir}/demo_test"
 
-  file { [$plugins_path, $demo_test_dir]:
+  file { $demo_test_dir:
     ensure  => directory,
     require => File[$wp_dir],
   }

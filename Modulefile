@@ -9,5 +9,5 @@ project_page 'https://github.com/rbjavier/puppet-wordpress'
 
 dependency 'puppetlabs/stdlib', '>= 2.2.1'
 dependency 'puppetlabs/apache', '>= 0.4.0'
-dependency 'puppetlabs/mysql', '>= 0.6.1'
+dependency 'puppetlabs/mysql', '>=1.0.0 <2.0.0'
 

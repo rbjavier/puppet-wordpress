@@ -1,0 +1,34 @@
+{
+  "name": "puppet-wordpress",
+  "version": "0.1.0",
+  "source": "git://github.com/rbjavier/puppet-wordpress.git",
+  "author": "rbjavier",
+  "license": "Apache 2.0",
+  "summary": "Puppet module for Wordpress",
+  "description": "Provide resources to build Wordpress applications",
+  "project_page": "https://github.com/rbjavier/puppet-wordpress",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "4.x"
+    },
+    {
+      "name": "puppetlabs/apache",
+      "version_requirement": "1.x"
+    },
+    {
+      "name": "puppetlabs/mysql",
+      "version_requirement": "3.x"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Modulefile": "38cf220556cad1acc5c1f70322a63a70",
+    "manifests/init.pp": "6ae82486f0fbae26cac081002e375bf9",
+    "manifests/warp_demo_pack.pp": "b48259f7cc20ffd24831c74cb1dbbee3",
+    "manifests/wp_app.pp": "5d5abcf1462049ac8083bca6945a099d",
+    "templates/wp-config.php.erb": "366feadb17b87073df154c61f0048265"
+  }
+}

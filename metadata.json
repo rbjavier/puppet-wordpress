@@ -25,7 +25,6 @@
 
   ],
   "checksums": {
-    "Modulefile": "38cf220556cad1acc5c1f70322a63a70",
     "manifests/init.pp": "6ae82486f0fbae26cac081002e375bf9",
     "manifests/warp_demo_pack.pp": "b48259f7cc20ffd24831c74cb1dbbee3",
     "manifests/wp_app.pp": "5d5abcf1462049ac8083bca6945a099d",

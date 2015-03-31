@@ -17,6 +17,9 @@ define wordpress_site::warp_demo_pack (
   }
 
   $dbname     = "${theme}_${build}"
+  $dbuser     = "root"
+  $dbpassword = $wordpress_site::mysql_rootpass
+  $dbhost     = 'localhost'
 
   mysql_database { $dbname:
     charset => 'utf8',

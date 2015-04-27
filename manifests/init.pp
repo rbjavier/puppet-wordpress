@@ -6,6 +6,19 @@ class wordpress_site (
 
   ensure_packages(['php5', 'php5-mysql', 'php5-curl', 'php5-gd', 'unzip'])
 
+  exec { "get_wp-cli":
+    command => "wget -P /tmp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&\
+               mv /tmp/wp-cli.phar /usr/local/bin/wp",
+    path    => ['/bin', '/usr/bin'],
+    creates => "/usr/local/bin/wp",
+  }
+
+  file { "/usr/local/bin/wp":
+    ensure  => present,
+    mode    => '+x',
+    require => Exec['get_wp-cli'],
+  }
+
   Database {
     require => Class['mysql::server'],
   }
